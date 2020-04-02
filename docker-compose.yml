@@ -1,4 +1,3 @@
-version: "3.7"
 services:
   dev:
     build:
@@ -6,11 +5,14 @@ services:
       args:
         UID: ${UID:-0}
         GID: ${GID:-0}
-    working_dir: /workspace
-    volumes:
-      - .:/workspace
-    user: "${UID:-0}:${GID:-0}"
     command:
       - bash
       - -c
       - npm install
+    ports:
+      - "${BIND_IP_ADDR:-127.0.0.1}:3000:3000"
+    user: "${UID:-0}:${GID:-0}"
+    volumes:
+      - .:/workspace
+    working_dir: /workspace
+version: "3.7"
