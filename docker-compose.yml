@@ -8,7 +8,9 @@ services:
     command:
       - bash
       - -c
-      - npm install
+      - |
+        npm install
+        npm run dev
     ports:
       - "${BIND_IP_ADDR:-127.0.0.1}:3000:3000"
     user: "${UID:-0}:${GID:-0}"
